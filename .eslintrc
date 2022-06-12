@@ -1,6 +1,6 @@
 {
   "extends": [
-    "prettier"
+  "prettier"
   ],
   "plugins": [
     "prettier",
@@ -11,7 +11,6 @@
       "jsx": true
     }
   },
-  "parser": "babel-eslint",
   "rules": {
     "quotes": [
       "error",
@@ -40,6 +39,12 @@
     "no-dupe-keys": "error",
     "no-dupe-args": "error",
     "no-case-declarations": "error",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "react/prop-types": [
+      "warn",
+      {
+        "skipUndeclared": true
+      }
+    ]
   }
 }
