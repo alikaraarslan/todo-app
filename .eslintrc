@@ -11,6 +11,7 @@
       "jsx": true
     }
   },
+  "parser": "babel-eslint",
   "rules": {
     "quotes": [
       "error",
@@ -26,7 +27,7 @@
     ],
     "prefer-template": "error",
     "consistent-return": "off",
-    "no-console": "error",
+    "no-console": "off",
     "no-plusplus": [
       "error",
       {
@@ -39,11 +40,6 @@
     "no-dupe-keys": "error",
     "no-dupe-args": "error",
     "no-case-declarations": "error",
-    "no-unused-vars": [
-      "error",
-      {
-        "args": "none"
-      }
-    ]
+    "no-unused-vars": "off"
   }
 }
