@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Form from './components/Form';
 import Header from './components/Header';
+import Icon from './components/Icon';
 import List from './components/List';
 
 const TodoContainer = styled.div`
@@ -25,6 +26,7 @@ const ContentWrapper = styled.div`
   .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     .btn {
       height: 32px;
       width: 130px;
@@ -38,9 +40,23 @@ const ContentWrapper = styled.div`
       color: White;
       cursor: pointer;
       transition: 200ms;
+      &.btn-refresh {
+        width: max-content;
+        background: transparent;
+        color: #035687;
+        svg {
+          width: 20px;
+          height: auto;
+        }
+      }
     }
     .btn[disabled] {
       cursor: not-allowed;
+    }
+    .header-item {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
     }
   }
 `;
@@ -120,6 +136,10 @@ function App() {
     }
   };
 
+  const handleReset = () => {
+    setTodoItems(allTodoItems);
+  };
+
   const handleTaskStatusChange = (e: any) => {
     const { id } = e.target;
     const newTodoItems = todoItems.map((item) => {
@@ -137,15 +157,27 @@ function App() {
         <ContentWrapper>
           <div className="header">
             <Header />
-            <button
-              className="btn"
-              onClick={() => {
-                handleClearCompleted();
-              }}
-              disabled={todoItems.filter((item) => item.completed).length === 0}
-            >
-              Clear Completed
-            </button>
+            <div className="header-item">
+              <button
+                className="btn btn-refresh"
+                onClick={() => {
+                  handleReset();
+                }}
+              >
+                <Icon name="reset" />
+              </button>
+              <button
+                className="btn"
+                onClick={() => {
+                  handleClearCompleted();
+                }}
+                disabled={
+                  todoItems.filter((item) => item.completed).length === 0
+                }
+              >
+                Clear Completed
+              </button>
+            </div>
           </div>
           {todoItems.filter((f) => !f.completed).length > 0 ? (
             <List
